@@ -64,6 +64,42 @@
   <header>
     
       <div class="icon"></div>
+      <a href="/2014/04/27/song-of-the-irish-whistle/">
+  <time datetime="2014-04-27T06:37:18.000Z">
+    Apr 27 2014
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2014/04/27/song-of-the-irish-whistle/">Song of the Irish Whistle</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <ul>
+<li>《Song of the Irish Whistle》 - 02 Down by the Salley Gardens</li>
+</ul>
+<embed src="http://www.xiami.com/widget/6147734_1354490/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2014/04/26/using-markdown-syntax/">
   <time datetime="2014-04-26T10:52:43.000Z">
     Apr 26 2014
@@ -79,10 +115,12 @@
   
   <div class="entry">
     
-      <blockquote>
+      <p><!--引用--></p>
+<blockquote>
 <p>脚步慢一些，等一下你的灵魂。</p>
 </blockquote>
 <h1 id="h1">h1</h1>
+<p><!--文章内跳转--></p>
 <ul>
 <li><a href="#sectionOne">Go to Section One</a></li>
 <li><a href="#sectionTwo">Go to Section Two</a></li>
@@ -90,10 +128,15 @@
 <li><a href="#myAnchor">My Anchor</a></li>
 </ul>
 <h2 id="h2">h2</h2>
-<p><em>italic</em> <strong>bold</strong></p>
+<p><!--斜体、加粗--></p>
+<ul>
+<li><em>italic</em> </li>
+<li><strong>bold</strong></li>
+</ul>
+<p><!--CSS样式按钮--></p>
 <div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>"><br>    <input type="checkbox" checked /><br></div>
 
-<p><a name="sectionOne"></a></p>
+<p><!--链接--><br><a name="sectionOne"></a></p>
 <h2 id="My_First_Header">My First Header</h2>
 <p>This is some content in my first section.</p>
 <table>
@@ -114,28 +157,27 @@
 </tr>
 </tbody>
 </table>
+<p><!--段落--></p>
 <p>This is true markdown text using <em>p</em> tag.</p>
 
 <p><a name="sectionTwo"></a></p>
 <h2 id="My_Second_Header">My Second Header</h2>
-<p>This is some content in my second section.<br>`#include <string.h></p>
+<p>This is some content in my second section.</p>
+<p><!--代码段--><br>‘#include <string.h></p>
 <h1 id="include">include<stdlib.h></h1>
 <h1 id="include-1">include<stdio.h></h1>
 <p>void tst_fun(int val)<br>{<br>      printf(“%d\n”,val);<br>}<br>int main(int argc, char<em>* argv)<br>{<br>     FILE</em> pf = fopen(“e:\a.txt”,”rb”);<br>        if(pf == NULL)<br>        {<br>                //err_handle();<br>                return (1);<br>        }<br>        const int BUFFLEN=200;<br>        char buffer[BUFFLEN];<br>        while(!feof(pf)) //判断是否到了文件末尾<br>        {<br>                //读取一行文件内容<br>                fgets(buffer,BUFFLEN,pf);<br>                //handle stream<br>                char* pindex = strstr(buffer,”、”);<br>                if(pindex == NULL)<br>                {<br>                        continue;<br>                }else<br>                {<br>                        pindex+=1;<br>                }<br>                int iVal = atoi(pindex);<br>                //call function<br>                tst_fun(iVal);<br>        }<br>        fclose(pf);<br>        return 0;<br>}`</p>
 <p><a name="sectionThree"></a></p>
 <h2 id="My_Third_Header">My Third Header</h2>
 <p>This is some content in my three section.</p>
-<p><a href="http://www.baidu.com" target="_blank">baidu</a></p>
-<ul><br>    <li>Bird</li><br>    <li>Magic</li><br></ul>
-
+<ul>
+<li>Bird</li>
+<li>Magic</li>
+</ul>
 <p><a name="myAnchor"></a></p>
 <h2 id="My_Header">My Header</h2>
 <p>This is some content in my first section.</p>
-<ul>
-<li>sublime text2</li>
-<li>markdown</li>
-<li>notepad++</li>
-</ul>
+<p><!--标题--></p>
 <h1 id="This_is_h1">This is h1</h1>
 <h2 id="This_is_h2">This is h2</h2>
 <h3 id="This_is_h3">This is h3</h3>
