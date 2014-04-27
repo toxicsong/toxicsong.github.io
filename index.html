@@ -205,37 +205,67 @@
 }
 </pre></figure>
 
-<p>代码：段落代码</p>
-<figure class="highlight"><pre>每行文字前加4个空格或者1个Tab
-<span class="comment">&lt;!-- 注释 --&gt;</span>
+<p>代码：段落代码 每行文字前加4个空格或者1个Tab</p>
+<figure class="highlight"><pre><span class="comment">&lt;!-- 注释 --&gt;</span>
 val s = "hello Markdown"
 println( s )
 </pre></figure>
 
-<p>代码：hexo</p>
-<figure class="highlight"><pre>可指定编程语言，『』代表左右大括号
-『% <span class="tag">codeblock</span> <span class="attr_selector">[title]</span> <span class="attr_selector">[lang:language]</span> <span class="attr_selector">[url]</span> <span class="attr_selector">[link text]</span> %』
+<p>代码：hexo 可指定编程语言，『』代表左右大括号</p>
+<figure class="highlight"><pre>『% <span class="tag">codeblock</span> <span class="attr_selector">[title]</span> <span class="attr_selector">[lang:language]</span> <span class="attr_selector">[url]</span> <span class="attr_selector">[link text]</span> %』
 	<span class="tag">code</span> <span class="tag">snippet</span>
 『% <span class="tag">endcodeblock</span> %』
 </pre></figure>
 
-<p>转义字符</p>
-<figure class="highlight"><pre>用html的注释，好像只有这样？
-Markdown中的转义字符为<span class="command">\，</span>转义的有：
-	<span class="command">\\</span> 反斜杠
-	<span class="command">\`</span> 反引号
-	<span class="command">\*</span> 星号
-	<span class="command">\_</span> 下划线
-	<span class="command">\{</span><span class="command">\}</span> 大括号
-	<span class="command">\[</span><span class="command">\]</span> 中括号
-	<span class="command">\(</span><span class="command">\)</span> 小括号
-	<span class="command">\#</span> 井号
-	<span class="command">\+</span> 加号
-	<span class="command">\-</span> 减号
-	<span class="command">\.</span> 英文句号
-	<span class="command">\!</span> 感叹号
+<p>转义字符 Markdown中的转义字符为\，转义的有：</p>
+<figure class="highlight"><pre><span class="command">\\</span> 反斜杠
+<span class="command">\`</span> 反引号
+<span class="command">\*</span> 星号
+<span class="command">\_</span> 下划线
+<span class="command">\{</span><span class="command">\}</span> 大括号
+<span class="command">\[</span><span class="command">\]</span> 中括号
+<span class="command">\(</span><span class="command">\)</span> 小括号
+<span class="command">\#</span> 井号
+<span class="command">\+</span> 加号
+<span class="command">\-</span> 减号
+<span class="command">\.</span> 英文句号
+<span class="command">\!</span> 感叹号
 </pre></figure>
 
+<p>其它</p>
+<figure class="highlight"><pre>  文本中可直接用html标签，但是要前后加上空行。
+</pre></figure>
+
+<p>one more thing：表格 Markdown的扩展语法，hexo不支持</p>
+<figure class="highlight"><pre><span class="string">|| *Year* || *Temperature (low)* || *Temperature (high)* ||</span>
+<span class="string">|| 1900 || -10 || 25 ||</span>
+<span class="string">|| 1910 || -15 || 30 ||</span>
+<span class="string">|| 1920 || -10 || 32 ||</span>
+</pre></figure>
+
+<h2 id="The_Normal_Distribution">The Normal Distribution</h2>
+<p>The normal distribution is defined as follows:</p>
+<figure class="highlight"><pre>&lt;!--latex公式--&gt;
+<span class="formula">$$latex
+f(x;<span class="command">\mu</span>,<span class="command">\sigma</span>^2) = <span class="command">\frac</span><span class="special">{</span>1<span class="special">}</span><span class="special">{</span><span class="command">\sigma</span><span class="command">\sqrt</span><span class="special">{</span>2<span class="command">\pi</span><span class="special">}</span><span class="special">}</span> e^<span class="special">{</span> -<span class="command">\frac</span><span class="special">{</span>1<span class="special">}</span><span class="special">{</span>2<span class="special">}</span><span class="command">\left</span>(<span class="command">\frac</span><span class="special">{</span>x-<span class="command">\mu</span><span class="special">}</span><span class="special">{</span><span class="command">\sigma</span><span class="special">}</span><span class="command">\right</span>)^2 <span class="special">}</span>
+$$</span>
+</pre></figure>
+
+<p>To generate random draws from a normal distribution we use the <strong>rnorm</strong> function:</p>
+<figure class="highlight"><pre><span class="list">{r block1}</span>
+output &lt;- rnorm(<span class="number">1000</span>, <span class="number">100</span>, <span class="number">15</span>);
+</pre></figure>
+
+<p>The normal distribution has the typical bell shape:</p>
+<figure class="highlight"><pre>{r block2, fig<span class="preprocessor">.width</span>=<span class="number">8</span>, fig<span class="preprocessor">.height</span>=<span class="number">5</span>}
+<span class="label">ggplot2:</span>:qplot(output)
+</pre></figure>
+
+<p>结束语</p>
+<figure class="highlight"><pre>以上基本够用，更详尽的请参考文献10，另外Markdown+R可以干大事，请参考文献7。
+</pre></figure>
+
+<p>参考文献<br><a href="http://ibruce.info/2013/11/26/markdown/" target="_blank">1.不如</a></p>
 <p><a name="sectionThree"></a></p>
 <h2 id="My_Third_Header">My Third Header</h2>
 <p>This is some content in my three section.</p>
@@ -256,7 +286,7 @@ Markdown中的转义字符为<span class="command">\，</span>转义的有：
 <p>自动链接:尖括号</p>
 <ul>
 <li><a href="http://toxicsong.github.io" target="_blank">http://toxicsong.github.io</a></li>
-<li><a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#x33;&#x34;&#50;&#53;&#x32;&#49;&#55;&#x38;&#x31;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;">&#x33;&#x34;&#50;&#53;&#x32;&#49;&#55;&#x38;&#x31;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;</a></li>
+<li><a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#x33;&#x34;&#50;&#53;&#x32;&#49;&#x37;&#56;&#49;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#x33;&#x34;&#50;&#53;&#x32;&#49;&#x37;&#56;&#49;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a></li>
 </ul>
 <p>索引超链：Reference方式,索引1 2可以是任意字符</p>
 <ul>
