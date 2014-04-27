@@ -114,57 +114,7 @@
   
   <div class="entry">
     
-      <p><!--引用--></p>
-<blockquote>
-<p>脚步慢一些，等一下你的灵魂。</p>
-</blockquote>
-<h1 id="h1">h1</h1>
-<p><!--文章内跳转--><br>文字超链：Inline方式,Tooltips可省略</p>
-<ul>
-<li><a href="#sectionOne">Go to Section One</a></li>
-<li><a href="#sectionTwo">Go to Section Two</a></li>
-<li><a href="#sectionThree">Go to Section Three</a></li>
-<li><a href="#myAnchor" title="我的链接">My Anchor</a></li>
-</ul>
-<h2 id="h2">h2</h2>
-<p><!--斜体、加粗--></p>
-<ul>
-<li><em>italic</em> </li>
-<li><strong>bold</strong></li>
-</ul>
-<p><!--CSS样式按钮--></p>
-<div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>"><br>    <input type="checkbox" checked /><br></div>
-
-<p><!--链接--><br><a name="sectionOne"></a></p>
-<h2 id="My_First_Header">My First Header</h2>
-<p>This is some content in my first section.</p>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell </td>
-</tr>
-</tbody>
-</table>
-<p><!--段落--></p>
-<p>This is true markdown text using <em>p</em> tag.</p>
-
-<p><a name="sectionTwo"></a></p>
-<h2 id="My_Second_Header">My Second Header</h2>
-<p>This is some content in my second section.</p>
-<p><!--代码段--><br>代码：行内代码</p>
-<p>在第一行后指定编程语言，也可以不指定</p>
-<figure class="highlight C"><pre>Func:读文本内容
+      <!--引用--><br>&gt; 脚步慢一些，等一下你的灵魂。<br><br>#h1<br><!--文章内跳转--><br>文字超链：Inline方式,Tooltips可省略<br>- <a href="#sectionOne">Go to Section One</a><br>- <a href="#sectionTwo">Go to Section Two</a><br>- <a href="#sectionThree">Go to Section Three</a><br>- <a href="#myAnchor" title="我的链接">My Anchor</a><br><br>##h2<br><!--斜体、加粗--><br>- <em>italic</em><br>- <strong>bold</strong><br><br><!--CSS样式按钮--><br><div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>"><br>    <input type="checkbox" checked /><br></div><br><br><!--链接--><br><a name="sectionOne"></a><br>## My First Header ##<br><br>This is some content in my first section.<br><br>First Header  | Second Header<br>——————- | ——————-<br>Content Cell  | Content Cell<br>Content Cell  | Content Cell<br><br><!--段落--><br><p>This is true markdown text using <em>p</em> tag.</p><br><br><a name="sectionTwo"></a><br>## My Second Header ##<br><br>This is some content in my second section.<br><br><!--代码段--><br>代码：行内代码<br><br>在第一行后指定编程语言，也可以不指定<br><br><figure class="highlight C"><pre>Func:读文本内容
 
 <span class="preprocessor">#include &lt;string.h&gt;</span>
 <span class="preprocessor">#include&lt;stdlib.h&gt;</span>
@@ -203,10 +153,11 @@
         fclose(pf);
         <span class="keyword">return</span> <span class="number">0</span>;
 }
-</pre></figure>
+</pre></figure><br><br>代码：段落代码<br><br>每行文字前加4个空格或者1个Tab<br><br><figure class="highlight"><pre><span class="comment">&lt;!-- 注释 --&gt;</span>
+    val s = "hello Markdown"
+    println( s )
+</pre></figure><br><br>代码：hexo<br><br>可指定编程语言，『』代表左右大括号<br>『% codeblock [title] [lang:language] [url] [link text] %』<br>    code snippet<br>『% endcodeblock %』<br><br>注释<br><br>用html的注释，好像只有这样？<br><!-- 注释 -->
 
-<p>代码：段落代码</p>
-<p>每行文字前加4个空格或者1个Tab<br>    val s = “hello Markdown”<br>    println( s )</p>
 <p><a name="sectionThree"></a></p>
 <h2 id="My_Third_Header">My Third Header</h2>
 <p>This is some content in my three section.</p>
@@ -227,7 +178,7 @@
 <p>自动链接:尖括号</p>
 <ul>
 <li><a href="http://toxicsong.github.io" target="_blank">http://toxicsong.github.io</a></li>
-<li><a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#x33;&#52;&#50;&#x35;&#50;&#49;&#x37;&#x38;&#49;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#x33;&#52;&#50;&#x35;&#50;&#49;&#x37;&#x38;&#49;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;</a></li>
+<li><a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#51;&#x34;&#x32;&#53;&#x32;&#x31;&#x37;&#56;&#x31;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#109;">&#51;&#x34;&#x32;&#53;&#x32;&#x31;&#x37;&#56;&#x31;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#109;</a></li>
 </ul>
 <p>索引超链：Reference方式,索引1 2可以是任意字符</p>
 <ul>
