@@ -42,6 +42,8 @@
       
         <li><a href="/archives">Archives</a></li>
       
+        <li><a href="/about">About</a></li>
+      
       
         <li><a href="/atom.xml">RSS</a></li>
       
@@ -83,20 +85,35 @@
 <li><a href="#sectionOne">Go to Section One</a></li>
 <li><a href="#sectionTwo">Go to Section Two</a></li>
 <li><a href="#sectionThree">Go to Section Three</a></li>
-<li><a href="#myAnchor">My Anchor</a><h2 id="h2">h2</h2>
-<em>italic</em> <strong>bold</strong></li>
+<li><a href="#myAnchor">My Anchor</a></li>
 </ul>
+<h2 id="h2">h2</h2>
+<p><em>italic</em> <strong>bold</strong></p>
 <div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>"><br>    <input type="checkbox" checked /><br></div>
 
-<h1 id="Table_of_Contents">Table of Contents</h1>
 <p><a name="sectionOne"></a></p>
 <h2 id="My_First_Header">My First Header</h2>
 <p>This is some content in my first section.</p>
-<table><br>    <tr><br>        <td markdown="1">This is <em>true</em> markdown text.</td><br>        <td markdown="1">This is <em>true</em> markdown text.</td><br>    </tr><br>    <tr><br>        <td markdown="1">This is <em>true</em> markdown text.</td><br>    </tr><br></table>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell </td>
+</tr>
+</tbody>
+</table>
+<p>This is true markdown text using <em>p</em> tag.</p>
 
-<div><br><br><p>This is <em>true</em> markdown text.</p><br><br></div>
-
-<p>This is another regular paragraph.</p>
 <p><a name="sectionTwo"></a></p>
 <h2 id="My_Second_Header">My Second Header</h2>
 <p>This is some content in my second section.<br>`#include <string.h></p>
@@ -104,7 +121,7 @@
 <h1 id="include-1">include<stdio.h></h1>
 <p>void tst_fun(int val)<br>{<br>      printf(“%d\n”,val);<br>}<br>int main(int argc, char<em>* argv)<br>{<br>     FILE</em> pf = fopen(“e:\a.txt”,”rb”);<br>        if(pf == NULL)<br>        {<br>                //err_handle();<br>                return (1);<br>        }<br>        const int BUFFLEN=200;<br>        char buffer[BUFFLEN];<br>        while(!feof(pf)) //判断是否到了文件末尾<br>        {<br>                //读取一行文件内容<br>                fgets(buffer,BUFFLEN,pf);<br>                //handle stream<br>                char* pindex = strstr(buffer,”、”);<br>                if(pindex == NULL)<br>                {<br>                        continue;<br>                }else<br>                {<br>                        pindex+=1;<br>                }<br>                int iVal = atoi(pindex);<br>                //call function<br>                tst_fun(iVal);<br>        }<br>        fclose(pf);<br>        return 0;<br>}`</p>
 <p><a name="sectionThree"></a></p>
-<h2 id="My_Three_Header">My Three Header</h2>
+<h2 id="My_Third_Header">My Third Header</h2>
 <p>This is some content in my three section.</p>
 <p><a href="http://www.baidu.com" target="_blank">baidu</a></p>
 <ul><br>    <li>Bird</li><br>    <li>Magic</li><br></ul>
@@ -122,7 +139,7 @@
 <h3 id="This_is_h3">This is h3</h3>
 <h4 id="This_is_h4">This is h4</h4>
 <h5 id="This_is_h5">This is h5</h5>
-<h6 id="This_is_h5-1">This is h5</h6>
+<h6 id="This_is_h6">This is h6</h6>
 
     
   </div>
