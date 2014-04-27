@@ -84,12 +84,12 @@
 <p>脚步慢一些，等一下你的灵魂。</p>
 </blockquote>
 <h1 id="h1">h1</h1>
-<p><!--文章内跳转--></p>
+<p><!--文章内跳转--><br>文字超链：Inline方式,Tooltips可省略</p>
 <ul>
 <li><a href="#sectionOne">Go to Section One</a></li>
 <li><a href="#sectionTwo">Go to Section Two</a></li>
 <li><a href="#sectionThree">Go to Section Three</a></li>
-<li><a href="#myAnchor">My Anchor</a></li>
+<li><a href="#myAnchor" title="我的链接">My Anchor</a></li>
 </ul>
 <h2 id="h2">h2</h2>
 <p><!--斜体、加粗--></p>
@@ -127,10 +127,84 @@
 <p><a name="sectionTwo"></a></p>
 <h2 id="My_Second_Header">My Second Header</h2>
 <p>This is some content in my second section.</p>
-<p><!--代码段--><br>‘#include <string.h></p>
-<h1 id="include">include<stdlib.h></h1>
-<h1 id="include-1">include<stdio.h></h1>
-<p>void tst_fun(int val)<br>{<br>      printf(“%d\n”,val);<br>}<br>int main(int argc, char<em>* argv)<br>{<br>     FILE</em> pf = fopen(“e:\a.txt”,”rb”);<br>        if(pf == NULL)<br>        {<br>                //err_handle();<br>                return (1);<br>        }<br>        const int BUFFLEN=200;<br>        char buffer[BUFFLEN];<br>        while(!feof(pf)) //判断是否到了文件末尾<br>        {<br>                //读取一行文件内容<br>                fgets(buffer,BUFFLEN,pf);<br>                //handle stream<br>                char* pindex = strstr(buffer,”、”);<br>                if(pindex == NULL)<br>                {<br>                        continue;<br>                }else<br>                {<br>                        pindex+=1;<br>                }<br>                int iVal = atoi(pindex);<br>                //call function<br>                tst_fun(iVal);<br>        }<br>        fclose(pf);<br>        return 0;<br>}`</p>
+<p><!--代码段--><br>代码：行内代码</p>
+<p>在第一行后指定编程语言，也可以不指定</p>
+<figure class="highlight C"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="code"><pre><span class="preprocessor">#include &lt;string.h&gt;</span>
+<span class="preprocessor">#include&lt;stdlib.h&gt;</span>
+<span class="preprocessor">#include&lt;stdio.h&gt;</span>
+<span class="keyword">void</span> tst_fun(<span class="keyword">int</span> val)
+{
+      <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,val);
+}
+<span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)
+{
+     FILE* pf = fopen(<span class="string">"e:\\a.txt"</span>,<span class="string">"rb"</span>);
+        <span class="keyword">if</span>(pf == NULL)
+        {
+                <span class="comment">//err_handle();</span>
+                <span class="keyword">return</span> (<span class="number">1</span>);
+        }
+        <span class="keyword">const</span> <span class="keyword">int</span> BUFFLEN=<span class="number">200</span>;
+        <span class="keyword">char</span> buffer[BUFFLEN];
+        <span class="keyword">while</span>(!feof(pf)) <span class="comment">//判断是否到了文件末尾</span>
+        {
+                <span class="comment">//读取一行文件内容</span>
+                fgets(buffer,BUFFLEN,pf);
+                <span class="comment">//handle stream</span>
+                <span class="keyword">char</span>* pindex = <span class="built_in">strstr</span>(buffer,<span class="string">"、"</span>);
+                <span class="keyword">if</span>(pindex == NULL)
+                {
+                        <span class="keyword">continue</span>;
+                }<span class="keyword">else</span>
+                {
+                        pindex+=<span class="number">1</span>;
+                }
+                <span class="keyword">int</span> iVal = atoi(pindex);
+                <span class="comment">//call function</span>
+                tst_fun(iVal);
+        }
+        fclose(pf);
+        <span class="keyword">return</span> <span class="number">0</span>;
+}
+</pre></td></tr></table></figure>
+
 <p><a name="sectionThree"></a></p>
 <h2 id="My_Third_Header">My Third Header</h2>
 <p>This is some content in my three section.</p>
@@ -150,15 +224,14 @@
 <h6 id="This_is_h6">This is h6</h6>
 <p>自动链接:尖括号</p>
 <ul>
-<li><a href="http://ibruce.info" target="_blank">http://ibruce.info</a></li>
-<li><a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#98;&#117;&#46;&#114;&#117;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#109;">&#98;&#117;&#46;&#114;&#117;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#109;</a>
-
-</li>
+<li><a href="http://toxicsong.github.io" target="_blank">http://toxicsong.github.io</a></li>
+<li><a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x33;&#x34;&#50;&#x35;&#x32;&#x31;&#55;&#56;&#49;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;">&#x33;&#x34;&#50;&#x35;&#x32;&#x31;&#55;&#56;&#49;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;</a></li>
 </ul>
 <p>索引超链：Reference方式,索引1 2可以是任意字符</p>
 <ul>
-<li><a href="http://toxicsong.github.io" target="_blank">toxicsong</a><br><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Octocat"></li>
+<li><a href="http://toxicsong.github.io" target="_blank">toxicsong</a><br><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark"></li>
 </ul>
+<p>图片超链<br>多个感叹号，Tooltips可省略，要设置大小只能借助HTML标记<br><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png" alt="GitHub Octocat" title="tooltip"></p>
 
     
   </div>
