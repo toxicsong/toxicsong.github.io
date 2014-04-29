@@ -62,6 +62,218 @@
   <header>
     
       <div class="icon"></div>
+      <a href="/2014/04/26/using-markdown-syntax/">
+  <time datetime="2014-04-26T10:52:43.000Z">
+    Apr 26 2014
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2014/04/26/using-markdown-syntax/">Using Markdown Syntax</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p><!--引用--></p>
+<blockquote>
+<p>脚步慢一些，等一下你的灵魂。</p>
+</blockquote>
+<h1 id="h1">h1</h1>
+<p><!--文章内跳转--><br>文字超链：Inline方式,Tooltips可省略</p>
+<ul>
+<li><a href="#sectionOne">Go to Section One</a></li>
+<li><a href="#sectionTwo">Go to Section Two</a></li>
+<li><a href="#sectionThree">Go to Section Three</a></li>
+<li><a href="#myAnchor" title="我的链接">My Anchor</a></li>
+</ul>
+<h2 id="h2">h2</h2>
+<p><!--斜体、加粗--></p>
+<ul>
+<li><em>italic</em> </li>
+<li><strong>bold</strong></li>
+</ul>
+<p><!--CSS样式按钮--></p>
+<div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>"><br>    <input type="checkbox" checked /><br></div>
+
+<p><!--链接--><br><a name="sectionOne"></a></p>
+<h2 id="My_First_Header">My First Header</h2>
+<p>This is some content in my first section.</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell </td>
+</tr>
+</tbody>
+</table>
+<p><!--段落--></p>
+<p>This is true markdown text using <em>p</em> tag.</p>
+
+<p><a name="sectionTwo"></a></p>
+<h2 id="My_Second_Header">My Second Header</h2>
+<p>This is some content in my second section.</p>
+<p><!--代码段--><br>代码：行内代码</p>
+<p>在第一行后指定编程语言，也可以不指定</p>
+<figure class="highlight C"><pre>Func:读文本内容
+
+<span class="preprocessor">#include &lt;string.h&gt;</span>
+<span class="preprocessor">#include&lt;stdlib.h&gt;</span>
+<span class="preprocessor">#include&lt;stdio.h&gt;</span>
+<span class="keyword">void</span> tst_fun(<span class="keyword">int</span> val)
+{
+      <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,val);
+}
+<span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)
+{
+     FILE* pf = fopen(<span class="string">"e:\\a.txt"</span>,<span class="string">"rb"</span>);
+        <span class="keyword">if</span>(pf == NULL)
+        {
+                <span class="comment">//err_handle();</span>
+                <span class="keyword">return</span> (<span class="number">1</span>);
+        }
+        <span class="keyword">const</span> <span class="keyword">int</span> BUFFLEN=<span class="number">200</span>;
+        <span class="keyword">char</span> buffer[BUFFLEN];
+        <span class="keyword">while</span>(!feof(pf)) <span class="comment">//判断是否到了文件末尾</span>
+        {
+                <span class="comment">//读取一行文件内容</span>
+                fgets(buffer,BUFFLEN,pf);
+                <span class="comment">//handle stream</span>
+                <span class="keyword">char</span>* pindex = <span class="built_in">strstr</span>(buffer,<span class="string">"、"</span>);
+                <span class="keyword">if</span>(pindex == NULL)
+                {
+                        <span class="keyword">continue</span>;
+                }<span class="keyword">else</span>
+                {
+                        pindex+=<span class="number">1</span>;
+                }
+                <span class="keyword">int</span> iVal = atoi(pindex);
+                <span class="comment">//call function</span>
+                tst_fun(iVal);
+        }
+        fclose(pf);
+        <span class="keyword">return</span> <span class="number">0</span>;
+}
+</pre></figure>
+
+<p>代码：段落代码 每行文字前加4个空格或者1个Tab</p>
+<figure class="highlight"><pre><span class="comment">&lt;!-- 注释 --&gt;</span>
+val s = "hello Markdown"
+println( s )
+</pre></figure>
+
+<p>代码：hexo 可指定编程语言，『』代表左右大括号</p>
+<figure class="highlight"><pre>『% <span class="tag">codeblock</span> <span class="attr_selector">[title]</span> <span class="attr_selector">[lang:language]</span> <span class="attr_selector">[url]</span> <span class="attr_selector">[link text]</span> %』
+	<span class="tag">code</span> <span class="tag">snippet</span>
+『% <span class="tag">endcodeblock</span> %』
+</pre></figure>
+
+<p>转义字符 Markdown中的转义字符为\，转义的有：</p>
+<figure class="highlight"><pre><span class="command">\\</span> 反斜杠
+<span class="command">\`</span> 反引号
+<span class="command">\*</span> 星号
+<span class="command">\_</span> 下划线
+<span class="command">\{</span><span class="command">\}</span> 大括号
+<span class="command">\[</span><span class="command">\]</span> 中括号
+<span class="command">\(</span><span class="command">\)</span> 小括号
+<span class="command">\#</span> 井号
+<span class="command">\+</span> 加号
+<span class="command">\-</span> 减号
+<span class="command">\.</span> 英文句号
+<span class="command">\!</span> 感叹号
+</pre></figure>
+
+<p>其它</p>
+<figure class="highlight"><pre>  文本中可直接用html标签，但是要前后加上空行。
+</pre></figure>
+
+<p>one more thing：表格 Markdown的扩展语法，hexo不支持</p>
+<figure class="highlight"><pre><span class="string">|| *Year* || *Temperature (low)* || *Temperature (high)* ||</span>
+<span class="string">|| 1900 || -10 || 25 ||</span>
+<span class="string">|| 1910 || -15 || 30 ||</span>
+<span class="string">|| 1920 || -10 || 32 ||</span>
+</pre></figure>
+
+<h2 id="The_Normal_Distribution">The Normal Distribution</h2>
+<p>The normal distribution is defined as follows:</p>
+<figure class="highlight"><pre>&lt;!--latex公式--&gt;
+<span class="formula">$$latex
+f(x;<span class="command">\mu</span>,<span class="command">\sigma</span>^2) = <span class="command">\frac</span><span class="special">{</span>1<span class="special">}</span><span class="special">{</span><span class="command">\sigma</span><span class="command">\sqrt</span><span class="special">{</span>2<span class="command">\pi</span><span class="special">}</span><span class="special">}</span> e^<span class="special">{</span> -<span class="command">\frac</span><span class="special">{</span>1<span class="special">}</span><span class="special">{</span>2<span class="special">}</span><span class="command">\left</span>(<span class="command">\frac</span><span class="special">{</span>x-<span class="command">\mu</span><span class="special">}</span><span class="special">{</span><span class="command">\sigma</span><span class="special">}</span><span class="command">\right</span>)^2 <span class="special">}</span>
+$$</span>
+</pre></figure>
+
+<p>To generate random draws from a normal distribution we use the <strong>rnorm</strong> function:</p>
+<figure class="highlight"><pre><span class="list">{r block1}</span>
+output &lt;- rnorm(<span class="number">1000</span>, <span class="number">100</span>, <span class="number">15</span>);
+</pre></figure>
+
+<p>The normal distribution has the typical bell shape:</p>
+<figure class="highlight"><pre>{r block2, fig<span class="preprocessor">.width</span>=<span class="number">8</span>, fig<span class="preprocessor">.height</span>=<span class="number">5</span>}
+<span class="label">ggplot2:</span>:qplot(output)
+</pre></figure>
+
+<p>结束语</p>
+<figure class="highlight"><pre>以上基本够用，更详尽的请参考文献10，另外Markdown+R可以干大事，请参考文献7。
+</pre></figure>
+
+<p>参考文献<br><a href="http://ibruce.info/2013/11/26/markdown/" target="_blank">1.不如</a></p>
+<p><a name="sectionThree"></a></p>
+<h2 id="My_Third_Header">My Third Header</h2>
+<p>This is some content in my three section.</p>
+<ul>
+<li>Bird</li>
+<li>Magic</li>
+</ul>
+<p><a name="myAnchor"></a></p>
+<h2 id="My_Header">My Header</h2>
+<p>This is some content in my first section.</p>
+<p><!--标题--></p>
+<h1 id="This_is_h1">This is h1</h1>
+<h2 id="This_is_h2">This is h2</h2>
+<h3 id="This_is_h3">This is h3</h3>
+<h4 id="This_is_h4">This is h4</h4>
+<h5 id="This_is_h5">This is h5</h5>
+<h6 id="This_is_h6">This is h6</h6>
+<p>自动链接:尖括号</p>
+<ul>
+<li><a href="http://toxicsong.github.io" target="_blank">http://toxicsong.github.io</a></li>
+<li><a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#51;&#52;&#50;&#x35;&#x32;&#49;&#x37;&#x38;&#49;&#x40;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#51;&#52;&#50;&#x35;&#x32;&#49;&#x37;&#x38;&#49;&#x40;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;</a></li>
+</ul>
+<p>索引超链：Reference方式,索引1 2可以是任意字符</p>
+<ul>
+<li><a href="http://toxicsong.github.io" target="_blank">toxicsong</a><br><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark"></li>
+</ul>
+<p>图片超链<br>多个感叹号，Tooltips可省略，要设置大小只能借助HTML标记<br><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png" alt="GitHub Octocat" title="tooltip"></p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2014/04/26/my-favourite-sites---the-verge/">
   <time datetime="2014-04-26T07:26:47.000Z">
     Apr 26 2014
