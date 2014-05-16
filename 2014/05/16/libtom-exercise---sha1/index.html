@@ -10,12 +10,34 @@
     <meta name="author" content="Jason Zhang">
   
   
+    <meta name="description" content="下面的C程序实现的功能：将pInData数组内数据进行hash-sha1运算，得到摘要值hash 
+
+首先引入头文件
+#include &quot;tomcrypt.h&quot;  
+#pragma comment (lib,&quot;tomcrypt.lib&quot;)
+
+
+声明变量（hash状态、执行返回结果、hash结果存放数组）, 赋初值
+hash_state		md;
+int			    ret = 0;
+int">
+  
   <meta content="article" property="og:type">
 <meta content="LibTom 加密之SHA1" property="og:title">
 <meta content="http://toxicsong.github.com/2014/05/16/libtom-exercise---sha1/" property="og:url">
 <meta property="og:image">
 <meta content="像一匹野马" property="og:site_name">
-<meta property="og:description">
+<meta content="下面的C程序实现的功能：将pInData数组内数据进行hash-sha1运算，得到摘要值hash 
+
+首先引入头文件
+#include "tomcrypt.h"  
+#pragma comment (lib,"tomcrypt.lib")
+
+
+声明变量（hash状态、执行返回结果、hash结果存放数组）, 赋初值
+hash_state		md;
+int			    ret = 0;
+int" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternate" href="/atom.xml" title="像一匹野马" type="application/atom+xml">
@@ -71,7 +93,76 @@
   
   <div class="entry">
     
-      
+      <p>下面的C程序实现的功能：<br>将pInData数组内数据进行hash-sha1运算，得到摘要值hash </p>
+<hr>
+<p>首先引入头文件</p>
+<figure class="highlight"><pre><span class="array">#include </span><span class="string">"tomcrypt.h"</span>  
+<span class="array">#pragma comment </span>(lib,<span class="string">"tomcrypt.lib"</span>)
+</pre></figure>
+
+<p>声明变量（hash状态、执行返回结果、hash结果存放数组）, 赋初值</p>
+<figure class="highlight"><pre>hash_state		md;
+<span class="keyword">int</span>			    ret = <span class="number">0</span>;
+<span class="keyword">int</span>				hash_index = <span class="number">0</span>;
+<span class="keyword">unsigned</span>  <span class="keyword">long</span>	hashLen = <span class="number">0</span>;
+<span class="keyword">unsigned</span>  <span class="keyword">char</span>	hash[MAXBLOCKSIZE];
+
+<span class="built_in">memset</span>(hash,<span class="number">0</span>,MAXBLOCKSIZE);
+
+<span class="keyword">unsigned</span>  <span class="keyword">char</span>	pInData[<span class="number">1024</span>] = {<span class="number">0</span>}; 
+<span class="keyword">unsigned</span>  <span class="keyword">long</span>	InDataLen = <span class="number">1024</span>;
+
+<span class="comment">//待HASH数据</span>
+<span class="built_in">memcpy</span>(pInData,<span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</span>,<span class="number">52</span>);
+</pre></figure>
+
+<p>注册hash函数</p>
+<figure class="highlight"><pre><span class="built_in">hash</span>_index = register_<span class="built_in">hash</span>(&sha1_desc);
+<span class="keyword">if</span> (<span class="built_in">hash</span>_index == -<span class="number">1</span>)
+{
+	<span class="built_in">printf</span>_s(<span class="string">"register_hash err\n"</span><span class="string">");
+	return -1;
+}</span>
+</pre></figure>
+
+<p>HASH后数据长160bit,20字节</p>
+<figure class="highlight"><pre><span class="built_in">hash</span>Len = <span class="built_in">hash</span>_descriptor[<span class="built_in">hash</span>_index].hashsize;
+</pre></figure>
+
+<p>HASH流程(init-&gt;process-&gt;done)</p>
+<figure class="highlight"><pre>ret = <span class="built_in">hash</span>_descriptor[<span class="built_in">hash</span>_index].init(&md);
+<span class="keyword">if</span> (ret!=CRYPT_OK)
+{
+	<span class="built_in">printf</span>_s(<span class="string">"hash_descriptor.init err\n"</span>); 
+	<span class="keyword">return</span> -<span class="number">1</span>;
+}
+ret = <span class="built_in">hash</span>_descriptor[<span class="built_in">hash</span>_index].process(&md,pInData,InDataLen);
+<span class="keyword">if</span> (ret!=CRYPT_OK)
+{
+	<span class="built_in">printf</span>_s(<span class="string">"hash_descriptor.process err\n"</span>); 
+	<span class="keyword">return</span> -<span class="number">1</span>;
+}
+ret = <span class="built_in">hash</span>_descriptor[<span class="built_in">hash</span>_index].done(&md, <span class="built_in">hash</span>);
+<span class="keyword">if</span> (ret!=CRYPT_OK)
+{
+	<span class="built_in">printf</span>_s(<span class="string">"hash_descriptor.done err\n"</span>); 
+	<span class="keyword">return</span> -<span class="number">1</span>;
+}
+</pre></figure>
+
+<p>打印hash结果</p>
+<figure class="highlight"><pre><span class="built_in">printf</span>_s(<span class="string">"消息摘要长度:\n%d\n\n"</span>,<span class="built_in">hash</span>Len);
+
+<span class="built_in">printf</span>_s(<span class="string">"消息摘要:\n"</span>);
+<span class="keyword">for</span> (int i=<span class="number">0</span>;i&lt;<span class="built_in">hash</span>Len;i++)
+{
+	<span class="built_in">printf</span>_s(<span class="string">"%x"</span>,<span class="built_in">hash</span>[i]);
+}
+<span class="built_in">printf</span>_s(<span class="string">"\n\n"</span>);
+</pre></figure>
+
+<p>查看GitHub <a href="https://github.com/toxicsong/LibTomExercise/blob/master/LibTom-SHA1" target="_blank">完整代码</a></p>
+
     
   </div>
   <footer>
