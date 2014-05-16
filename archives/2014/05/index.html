@@ -64,6 +64,187 @@
   <header>
     
       <div class="icon"></div>
+      <a href="/2014/05/16/libtom-exercise---ecc/">
+  <time datetime="2014-05-16T03:53:44.000Z">
+    May 16 2014
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2014/05/16/libtom-exercise---ecc/">LibTom 加密之ECC</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2014/05/16/libtom-exercise---rsa/">
+  <time datetime="2014-05-16T03:53:39.000Z">
+    May 16 2014
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2014/05/16/libtom-exercise---rsa/">LibTom 加密之RSA</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2014/05/16/libtom-exercise---sha1/">
+  <time datetime="2014-05-16T03:53:31.000Z">
+    May 16 2014
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2014/05/16/libtom-exercise---sha1/">LibTom 加密之SHA1</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2014/05/16/libtom-exercise---aes/">
+  <time datetime="2014-05-16T03:53:19.000Z">
+    May 16 2014
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2014/05/16/libtom-exercise---aes/">LibTom 加密之AES</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight"><pre><span class="comment">/*   
+    下面的程序实现的功能：  
+    将字符串c1用AES方法加密放在c2中，再解密放在c3中，密钥是myKey   
+*/</span> 
+     
+<span class="preprocessor">#include "tomcrypt.h"  </span>
+<span class="preprocessor">#pragma comment (lib,"tomcrypt.lib")		<span class="comment">//crypt_s.lib  </span></span>
+
+<span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])  
+{     
+    <span class="keyword">unsigned</span> <span class="keyword">char</span> myKey[<span class="number">32</span>]= <span class="string">"7187654321"</span>;	 <span class="comment">// 加密密钥    </span>
+    symmetric_key skey;						<span class="comment">// 加密状态  </span>
+     
+    aes_setup(myKey, <span class="number">32</span>, <span class="number">0</span>, &skey);			<span class="comment">// 加密前初始化状态(密钥，密钥长度，迭代次数(0: 使用推荐值)，加密状态)  </span>
+     
+     
+    <span class="keyword">unsigned</span> <span class="keyword">char</span> c1[<span class="number">32</span>]=<span class="string">"硬件研发中心"</span>;		 <span class="comment">// 需要加密的字符串长度任意  </span>
+    <span class="keyword">unsigned</span> <span class="keyword">char</span> c2[<span class="number">32</span>];					  <span class="comment">// 输出长度&gt;= 输入长度，分段长度的倍数(这里就是16的倍数)      </span>
+     
+    <span class="comment">// 分段加密，每段长度为16 (一般不可能只有2段，自己写循环)    </span>
+    aes_ecb_encrypt(&c1[<span class="number">0</span>], &c2[<span class="number">0</span>],&skey);     
+    aes_ecb_encrypt(&c1[<span class="number">16</span>], &c2[<span class="number">16</span>],&skey);     
+    
+	printf_s(<span class="string">"encrypted data:\n"</span>);
+	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)
+	{
+		printf_s(<span class="string">"%x"</span>,c2[i]);
+	}
+	printf_s(<span class="string">"\n\n"</span>);
+
+    <span class="keyword">unsigned</span> <span class="keyword">char</span> c3[<span class="number">32</span>];     
+    aes_setup(myKey, <span class="number">32</span>, <span class="number">0</span>, &skey);			<span class="comment">// 解密前初始化状态，其实和加密的状态是完全一致的  </span>
+         
+    <span class="comment">// 分段解密     </span>
+    aes_ecb_decrypt(&c2[<span class="number">0</span>], &c3[<span class="number">0</span>],&skey);     
+    aes_ecb_decrypt(&c2[<span class="number">16</span>], &c3[<span class="number">16</span>],&skey);   
+
+
+	printf_s(<span class="string">"decrypted data:\n"</span>);
+	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)
+	{
+		printf_s(<span class="string">"%c"</span>,c3[i]);
+	}
+	printf_s(<span class="string">"\n\n"</span>);
+
+    <span class="keyword">return</span> <span class="number">0</span>;  
+}
+</pre></figure>
+
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2014/05/09/data-structure-visualizations/">
   <time datetime="2014-05-09T15:00:06.000Z">
     May 9 2014
