@@ -10,34 +10,34 @@
     <meta name="author" content="Jason Zhang">
   
   
-    <meta name="description" content="/*   
-    下面的程序实现的功能：  
-    将字符串c1用AES方法加密放在c2中，再解密放在c3中，密钥是myKey   
-*/ 
-     
-#include &quot;tomcrypt.h&quot;  
-#pragma comment (lib,&quot;tomcrypt.lib&quot;)		//crypt_s.lib  
+    <meta name="description" content="下面的C程序实现的功能：将字符串c1用AES方法加密放在c2中，再解密放在c3中，密钥是myKey 
 
-int main(int argc, char* argv[])  
-{   
-	/">
+加密部分：
+首先引入头文件
+#include &quot;tomcrypt.h&quot;  
+#pragma comment (lib,&quot;tomcrypt.lib&quot;)
+
+
+声明变量：加密密钥、加密状态
+unsigned char myKey[32] = &quot;7187654321&quot;;	     
+symmetric_">
   
   <meta content="article" property="og:type">
 <meta content="LibTom 加密之AES" property="og:title">
 <meta content="http://toxicsong.github.com/2014/05/16/libtom-exercise---aes/" property="og:url">
 <meta property="og:image">
 <meta content="像一匹野马" property="og:site_name">
-<meta content="/*   
-    下面的程序实现的功能：  
-    将字符串c1用AES方法加密放在c2中，再解密放在c3中，密钥是myKey   
-*/ 
-     
-#include "tomcrypt.h"  
-#pragma comment (lib,"tomcrypt.lib")		//crypt_s.lib  
+<meta content="下面的C程序实现的功能：将字符串c1用AES方法加密放在c2中，再解密放在c3中，密钥是myKey 
 
-int main(int argc, char* argv[])  
-{   
-	/" property="og:description">
+加密部分：
+首先引入头文件
+#include "tomcrypt.h"  
+#pragma comment (lib,"tomcrypt.lib")
+
+
+声明变量：加密密钥、加密状态
+unsigned char myKey[32] = "7187654321";	     
+symmetric_" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternate" href="/atom.xml" title="像一匹野马" type="application/atom+xml">
@@ -93,59 +93,64 @@ int main(int argc, char* argv[])
   
   <div class="entry">
     
-      <figure class="highlight"><pre><span class="comment">/*   
-    下面的程序实现的功能：  
-    将字符串c1用AES方法加密放在c2中，再解密放在c3中，密钥是myKey   
-*/</span> 
-     
-<span class="preprocessor">#include "tomcrypt.h"  </span>
-<span class="preprocessor">#pragma comment (lib,"tomcrypt.lib")		<span class="comment">//crypt_s.lib  </span></span>
+      <p>下面的C程序实现的功能：<br>将字符串c1用AES方法加密放在c2中，再解密放在c3中，密钥是myKey </p>
+<hr>
+<h3 id="加密部分：">加密部分：</h3>
+<p>首先引入头文件</p>
+<figure class="highlight"><pre><span class="array">#include </span><span class="string">"tomcrypt.h"</span>  
+<span class="array">#pragma comment </span>(lib,<span class="string">"tomcrypt.lib"</span>)
+</pre></figure>
 
-<span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])  
-{   
-	<span class="comment">// 加密密钥  </span>
-    <span class="keyword">unsigned</span> <span class="keyword">char</span> myKey[<span class="number">32</span>]= <span class="string">"7187654321"</span>;
-	<span class="comment">// 加密状态	     </span>
-    symmetric_key skey;						  
-     
-	<span class="comment">// 加密前初始化状态(密钥，密钥长度，迭代次数(0: 使用推荐值)，加密状态)</span>
-    aes_setup(myKey, <span class="number">32</span>, <span class="number">0</span>, &skey);			  
-     
-	<span class="comment">// 需要加密的字符串长度任意</span>
-	<span class="comment">// 输出长度&gt;= 输入长度，分段长度的倍数(这里就是16的倍数)</span>
-    <span class="keyword">unsigned</span> <span class="keyword">char</span> c1[<span class="number">32</span>]=<span class="string">"硬件研发中心"</span>;		   
-    <span class="keyword">unsigned</span> <span class="keyword">char</span> c2[<span class="number">32</span>];					       
-     
-    <span class="comment">// 分段加密，每段长度为16 (一般不可能只有2段，自己写循环)    </span>
-    aes_ecb_encrypt(&c1[<span class="number">0</span>], &c2[<span class="number">0</span>],&skey);     
-    aes_ecb_encrypt(&c1[<span class="number">16</span>], &c2[<span class="number">16</span>],&skey);     
-    
-	printf_s(<span class="string">"encrypted data:\n"</span>);
-	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)
-	{
-		printf_s(<span class="string">"%x"</span>,c2[i]);
-	}
-	printf_s(<span class="string">"\n\n"</span>);
+<p>声明变量：加密密钥、加密状态</p>
+<figure class="highlight"><pre><span class="keyword">unsigned</span> <span class="keyword">char</span> myKey[<span class="number">32</span>] = <span class="string">"7187654321"</span>;	     
+symmetric_key skey = <span class="number">0</span>;
+</pre></figure>
 
-    <span class="keyword">unsigned</span> <span class="keyword">char</span> c3[<span class="number">32</span>];
+<p>加密前初始化状态(密钥，密钥长度，迭代次数(0: 使用推荐值)，加密状态)</p>
+<figure class="highlight"><pre><span class="function">aes_setup(myKey, <span class="number">32</span>, <span class="number">0</span>, &skey)</span>;
+</pre></figure>
 
-	<span class="comment">// 解密前初始化状态，其实和加密的状态是完全一致的     </span>
-    aes_setup(myKey, <span class="number">32</span>, <span class="number">0</span>, &skey);			  
-         
-    <span class="comment">// 分段解密     </span>
-    aes_ecb_decrypt(&c2[<span class="number">0</span>], &c3[<span class="number">0</span>],&skey);     
-    aes_ecb_decrypt(&c2[<span class="number">16</span>], &c3[<span class="number">16</span>],&skey);   
+<p>需要加密的字符串长度任意<br>输出长度&gt;= 输入长度，分段长度的倍数(这里就是16的倍数)</p>
+<figure class="highlight"><pre><span class="keyword">unsigned</span> <span class="keyword">char</span> c1[<span class="number">32</span>] = <span class="string">"硬件研发中心"</span>;		   
+<span class="keyword">unsigned</span> <span class="keyword">char</span> c2[<span class="number">32</span>] = {<span class="number">0</span>};
+</pre></figure>
 
+<p>分段加密，每段长度为16 (一般不可能只有2段，自己写循环)    </p>
+<figure class="highlight"><pre><span class="tag">aes_ecb_encrypt</span>(&<span class="tag">c1</span><span class="attr_selector">[0]</span>, &<span class="tag">c2</span><span class="attr_selector">[0]</span>,&<span class="tag">skey</span>);     
+<span class="tag">aes_ecb_encrypt</span>(&<span class="tag">c1</span><span class="attr_selector">[16]</span>, &<span class="tag">c2</span><span class="attr_selector">[16]</span>,&<span class="tag">skey</span>);
+</pre></figure>
 
-	printf_s(<span class="string">"decrypted data:\n"</span>);
-	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)
-	{
-		printf_s(<span class="string">"%c"</span>,c3[i]);
-	}
-	printf_s(<span class="string">"\n\n"</span>);
-
-    <span class="keyword">return</span> <span class="number">0</span>;  
+<p>输出密文</p>
+<figure class="highlight"><pre><span class="built_in">printf</span>_s(<span class="string">"encrypted data:\n"</span>);
+<span class="keyword">for</span> (int i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)
+{
+	<span class="built_in">printf</span>_s(<span class="string">"%x"</span>,c2[i]);
 }
+<span class="built_in">printf</span>_s(<span class="string">"\n\n"</span>);
+</pre></figure>
+
+<hr>
+<h3 id="解密部分：">解密部分：</h3>
+<p>定义c3数组，存放解密数据</p>
+<figure class="highlight"><pre><span class="keyword">unsigned</span> <span class="keyword">char</span> c3[<span class="number">32</span>] = {<span class="number">0</span>};
+</pre></figure>
+
+<p>解密前初始化状态，和加密的状态是完全一致的     </p>
+<figure class="highlight"><pre><span class="function">aes_setup(myKey, <span class="number">32</span>, <span class="number">0</span>, &skey)</span>;
+</pre></figure>
+
+<p>分段解密</p>
+<figure class="highlight"><pre><span class="tag">aes_ecb_decrypt</span>(&<span class="tag">c2</span><span class="attr_selector">[0]</span>, &<span class="tag">c3</span><span class="attr_selector">[0]</span>,&<span class="tag">skey</span>);     
+<span class="tag">aes_ecb_decrypt</span>(&<span class="tag">c2</span><span class="attr_selector">[16]</span>, &<span class="tag">c3</span><span class="attr_selector">[16]</span>,&<span class="tag">skey</span>);
+</pre></figure>
+
+<p>打印解密数据</p>
+<figure class="highlight"><pre><span class="built_in">printf</span>_s(<span class="string">"decrypted data:\n"</span>);
+<span class="keyword">for</span> (int i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)
+{
+	<span class="built_in">printf</span>_s(<span class="string">"%c"</span>,c3[i]);
+}
+<span class="built_in">printf</span>_s(<span class="string">"\n\n"</span>);
 </pre></figure>
 
 
